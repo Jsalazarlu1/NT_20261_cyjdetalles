@@ -1,0 +1,22 @@
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Archivos generados (HU3)
+data/
+*.csv
+*.json
+
+# Configuración de editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
