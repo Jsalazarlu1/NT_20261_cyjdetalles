@@ -1,5 +1,5 @@
 import random
-def simular_servicio(numeroSimulaciones):
+def simular_usuario(numeroSimulaciones):
     #Semillas por cada atributo de mi tabla
 
     #id nombres contraseña rol idempleado
@@ -8,24 +8,18 @@ def simular_servicio(numeroSimulaciones):
 
     ids=[1,2,3,4,5]
 
-   ''' mascotas=["Zuker","Faustino","Primorosa","Dana","Lorenzo"]
+    contrasenas=["12345","1234","123456"]
 
-    dueños=["Carlos Tevez","Cachaza Hernandez","Totono Grisales","Jhon Doe","Amparo Grisales"]
+    roles=["Administrador","Vendedor"]
 
-    fechas=["2026-04-02","2025-12-24","2026-06-23","2024-12-24","2023-12-24"]
-
-    codigos=["AM1","AM2","AM45","AM50","AM500"]'''
-
-    servicios=[]
+    usuarios=[]
 
     for _ in range (numeroSimulaciones):
-        servicio={
-            "id": random.choice(codigos),
-            "fecha": random.choice(fechas),
-            "mascota":random.choice(mascotas),
-            "dueño": random.choice(dueños),
-            "valor": random.choice(valores),
-            "nombra": random.choice(nombres)
+        usuario={
+            "id": random.choice(ids),
+            "nombre": random.choice(nombres),
+            "contrasena":random.choice(contrasenas),
+            "rol": random.choice(roles)
         }
-        servicio.append(servicio)
-    return servicios    
+        usuario.append(usuario)
+    return usuarios    
