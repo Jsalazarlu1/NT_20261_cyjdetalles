@@ -34,7 +34,7 @@ def generar_simulacion(numeroSimulaciones):
             simulacion["precio"]=random.choice([0,-10000,None])
         elif(probabilidadError<0.8):
             simulacion["categoria"]=random.choice([" ","Comida","Bebida",None])        
-            elif(probabilidadError<0.95):
+        elif(probabilidadError<0.95):
             simulacion["stock"]=random.choice([-100,None])
 
         simulaciones.append(simulacion)
