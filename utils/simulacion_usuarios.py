@@ -10,7 +10,7 @@ def simular_usuario(numeroSimulaciones):
 
     contrasenas=["12345","1234","123456"]
 
-    roles=["Administrador","Vendedor"]
+    roles=["Administrador","Vendedor","cliente"]
 
     usuarios=[]
 
