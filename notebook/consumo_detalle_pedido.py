@@ -1,7 +1,8 @@
 import requests
 
-def consumir_productos():
-    url = "http://localhost:8081/api/productos"
+
+def cargar_datos():
+    url = "http://localhost:8081/api/detallepedidos"
     respuesta = requests.get(url)
     respuesta.raise_for_status()
     datos = respuesta.json()

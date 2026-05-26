@@ -1,31 +1,41 @@
 import random
 
-def simular_detallepedido(numeroSimulaciones): # Simula el detalle del pedido, generando datos aleatorios para cada atributo de la tabla DetallePedido
-    # Semillas por cada atributo de mi tabla
+def generar_simulacion_detalle_pedido(numerSimulaciones):
+    id_detalle_pedidos = ["AM1", "AM2", "AM3", "AM4", "AM5"]
+    id_pedidos = [1, 2, 3, 4, 5]
+    id_productos = [150000, 5000000, 1000000, 500000, 80000]
+    cantidades = [1, 2, 3, 4, 5]
+    precios_unitarios = [150000, 50000, 100000, 15000, 80000]
 
-    id_detalle = ["AM1", "AM2", "AM45", "AM50", "AM25"]
-    id_pedido = [1, 2, 3, 4, 5]
-    id_producto = [150000, 5000000, 1000000, 500000, 80000]
-    cantidades = [10, 20, 30, 40, 50]
-    precios = [150000, 5000000, 1000000, 500000, 80000]
-
-    detalles_pedido = []  #Lista para almacenar los detalles del pedido generados
-    for _ in range(numeroSimulaciones):
+    simulaciones = []
+    for _ in range(numerSimulaciones):
         cantidad = random.choice(cantidades)
-        precio = random.choice(precios)
+        precio = random.choice(precios_unitarios)
         subtotal = cantidad * precio
         total = subtotal + int(subtotal * 0.19)
 
-#Creo un diccionario para cada detalle del pedido con los atributos correspondientes y lo agrego a la lista detalles_pedido
-        detalle_pedido = {
-            "id_detalle": random.choice(id_detalle),
-            "id_pedido": random.choice(id_pedido),
-            "id_producto": random.choice(id_producto),
+        detalle = {
+            "id_detalle": random.choice(id_detalle_pedidos),
+            "id_pedido": random.choice(id_pedidos),
+            "id_producto": random.choice(id_productos),
             "cantidad": cantidad,
-            "precio": precio,
+            "precio_unitario": precio,
             "subtotal": subtotal,
             "total": total,
         }
-        detalles_pedido.append(detalle_pedido)
 
-    return detalles_pedido
+        probabilidadError = random.random()
+        if probabilidadError < 0.15:
+            detalle["id_detalle"] = ""
+        elif probabilidadError < 0.25:
+            detalle["id_pedido"] = random.choice(["", "cuatro", None])
+        elif probabilidadError < 0.35:
+            detalle["cantidad"] = random.choice([0, -1, "cinco", None])
+        elif probabilidadError < 0.45:
+            detalle["precio_unitario"] = random.choice([-5000, "cien mil", None])
+        elif probabilidadError < 0.55:
+            detalle["id_detalle"] = f"  {detalle['id_detalle']}  "
+
+        simulaciones.append(detalle)
+
+    return simulaciones

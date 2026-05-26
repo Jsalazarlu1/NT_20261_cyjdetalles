@@ -16,6 +16,8 @@ from utils.simulacionerrores_clientes import simular_clientes
 from limpieza_clientes import limpiar_clientes
 from simulacion_pedidos_limpieza import generar_simulacion
 from limpieza_pedidos import limpiar_pedidos
+from limpienza_detalle_pedido import limpiar_detalle_pedido
+from notebook.consumo_detalle_pedido import cargar_datos
 
 
 if __name__ == "__main__":
@@ -48,3 +50,16 @@ if __name__ == "__main__":
     print("\n=== PEDIDOS: DATOS LIMPIOS ===")
     print(pedidos_limpios.to_string())
     print(f"\nTotal pedidos limpios: {len(pedidos_limpios)}")
+
+    # Detalle Pedidos con errores y limpieza
+    print("=== DETALLE_PEDIDO: DATOS SUCIOS ===")
+    df_detallepedido_sucio = pd.DataFrame(cargar_datos())
+    print(df_detallepedido_sucio.to_string())
+    print(f"\nTotal registros sucios: {len(df_detallepedido_sucio)}")
+    print(f"Nulos por columna:\n{df_detallepedido_sucio.isnull().sum()}")
+
+    df_detallepedido_limpio = limpiar_detalle_pedido(df_detallepedido_sucio)
+
+    print("=== DETALLE_PEDIDO: DATOS LIMPIOS ===")
+    print(df_detallepedido_limpio.to_string())
+    print(f"\nTotal registros limpios: {len(df_detallepedido_limpio)}")
