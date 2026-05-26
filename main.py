@@ -18,6 +18,7 @@ from simulacion_pedidos_limpieza import generar_simulacion
 from limpieza_pedidos import limpiar_pedidos
 from limpienza_detalle_pedido import limpiar_detalle_pedido
 from notebook.consumo_detalle_pedido import cargar_datos
+from notebook.graficacion_detalle_pedido import graficar_detalle_pedido
 
 
 if __name__ == "__main__":
@@ -63,3 +64,6 @@ if __name__ == "__main__":
     print("=== DETALLE_PEDIDO: DATOS LIMPIOS ===")
     print(df_detallepedido_limpio.to_string())
     print(f"\nTotal registros limpios: {len(df_detallepedido_limpio)}")
+
+    # Gráficos de detalle_pedido
+    graficar_detalle_pedido(df_detallepedido_limpio)
